@@ -5,6 +5,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
@@ -37,7 +38,7 @@ to quickly create a Cobra application.`,
 
 		if Evolution {
 			suffix := "#Evolution"
-			fmt.Printf("Evolution: " + BaseURI, name, suffix)
+			fmt.Printf(color.CyanString("Evolution: ") + BaseURI, name, suffix)
 		}
 		if Learnset {
 			gen := viper.Get("gen")
@@ -53,15 +54,15 @@ to quickly create a Cobra application.`,
 				suffix = fmt.Sprintf("/Generation_%s_learnset", gen)
 			}
 
-			fmt.Printf("Learnset: " + BaseURI, name, suffix)
+			fmt.Printf(color.BlueString("Learnset: ") + BaseURI, name, suffix)
 		}
 		if Stats {
 			suffix := "#Stats"
-			fmt.Printf("Stats: " + BaseURI, name, suffix)
+			fmt.Printf(color.GreenString("Stats: ") + BaseURI, name, suffix)
 		}
 		if TypeEffectiveness {
 			suffix := "#Type_effectiveness"
-			fmt.Printf("Type effectiveness: " + BaseURI, name, suffix)
+			fmt.Printf(color.MagentaString("Type effectiveness: ") + BaseURI, name, suffix)
 		}
 	},
 }
