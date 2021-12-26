@@ -1,6 +1,20 @@
 package util
 
-import "strconv"
+import (
+	"strconv"
+	"strings"
+)
+
+func GenToNumber(genNumeral string) int {
+	number := 0
+	if strings.Contains(genNumeral, "V") {
+		number += 5
+	}
+
+	number += strings.Count(genNumeral, "I")
+
+	return number
+}
 
 func GenToNumeral(genNumber string) string {
 	genNumberInt, err := strconv.Atoi(genNumber)

@@ -11,14 +11,11 @@ import (
 
 // genCmd represents the gen command
 var genCmd = &cobra.Command{
-	Use:   "gen",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Use:   "gen [gen #]",
+	Short: "Set your default gen for searching learnsets & other information.",
+	Long: `Set your default gen for searching learnsets & other information.`,
+	Example: `
+* pokesearch config gen 4 -> change default gen to IV`,
 	ValidArgs: []string{"1", "2", "3", "4", "5", "6", "7", "8"},
 	Args: cobra.ExactValidArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {

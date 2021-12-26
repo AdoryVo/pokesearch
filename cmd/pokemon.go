@@ -21,14 +21,14 @@ var TypeEffectiveness bool
 
 // pokemonCmd represents the pokemon command
 var pokemonCmd = &cobra.Command{
-	Use:   "pokemon",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Aliases: []string{"p"},
+	Use:   "pokemon [pokémon]",
+	Short: "Search information for a specified Pokémon.",
+	Long: `Search information for a specified Pokémon. Information will be delivered in the form of links to Bulbapedia sections.`,
+	Example: `
+* pokesearch pokemon poliwag -l -> retrieve link for Poliwag's learnset from the current default config gen (IV if 'pokesearch config gen 4' was used)
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+* pokesearch pokemon kadabra -elst -g 5 -> retrieve links for Kadabra's evolution, Gen V learnset, stats, and type effectiveness`,
 	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		name := args[0]
@@ -42,7 +42,7 @@ to quickly create a Cobra application.`,
 		}
 		if Learnset {
 			gen := viper.Get("gen")
-			if Gen > 0{
+			if Gen > 0 {
 				gen = util.GenToNumeral(strconv.Itoa(Gen))
 			}
 			suffix := ""
@@ -69,7 +69,6 @@ to quickly create a Cobra application.`,
 
 func init() {
 	rootCmd.AddCommand(pokemonCmd)
-
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
@@ -80,7 +79,7 @@ func init() {
 	// is called directly, e.g.:
 	// pokemonCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	pokemonCmd.Flags().BoolVarP(&Evolution, "evolution", "e", false, "search evolution")
-	pokemonCmd.Flags().IntVarP(&Gen, "gen", "g", -1, "specify gen")
+	pokemonCmd.Flags().IntVarP(&Gen, "gen", "g", 8, "specify gen to override default config gen")
 	pokemonCmd.Flags().BoolVarP(&Learnset, "learnset", "l", false, "search learnset")
 	pokemonCmd.Flags().BoolVarP(&Stats, "stats", "s", false, "search stats")
 	pokemonCmd.Flags().BoolVarP(&TypeEffectiveness, "type", "t", false, "search type effectiveness")

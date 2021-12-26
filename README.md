@@ -1,11 +1,11 @@
-<h1><img src="repeat-ball.webp" width="24" height="24" /> Pokesearch</h1>
+<h1><img src="assets/repeat-ball.webp" width="24" height="24" /> Pokesearch</h1>
 Command line tool for searching Pokemon information.
 
 ---
 
 *Work in progress*
 
-![Command line screenshot](screenshot.png)
+![Command line screenshot](assets/screenshot.png)
 
 ## To-do
 - Usage details
