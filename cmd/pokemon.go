@@ -42,7 +42,7 @@ var pokemonCmd = &cobra.Command{
 		}
 		if Learnset {
 			gen := viper.Get("gen")
-			if Gen > 0 {
+			if Gen >= 1 && Gen <= 7 {
 				gen = util.GenToNumeral(strconv.Itoa(Gen))
 			}
 			suffix := ""
