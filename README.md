@@ -10,6 +10,7 @@ Command line tool for searching Pokemon information.
 ## 💡Usage
 - `pokesearch config gen [genNumber]` - Set a default gen for learnsets
 	- Ex: `pokesearch config gen 4` - Set default gen to IV
+- `pokesearch config list` - List configuration values
 - `pokesearch pokemon [pokemonName] [flags]` - Search info for a specified Pokemon
 	- Ex: `pokesearch pokemon kadabra -elst -g 5`
 		- Get Bulbapedia links for Kadabra's Evolution, Gen V Learnset, Stats, and Type Effectiveness
