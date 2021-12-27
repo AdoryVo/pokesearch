@@ -22,9 +22,9 @@ var TypeEffectiveness bool
 // pokemonCmd represents the pokemon command
 var pokemonCmd = &cobra.Command{
 	Aliases: []string{"p"},
-	Use:   "pokemon [pokémon]",
-	Short: "Search information for a specified Pokémon.",
-	Long: `Search information for a specified Pokémon. Information will be delivered in the form of links to Bulbapedia sections.`,
+	Use:     "pokemon [pokémon]",
+	Short:   "Search information for a specified Pokémon.",
+	Long:    `Search information for a specified Pokémon. Information will be delivered in the form of links to Bulbapedia sections.`,
 	Example: `
 * pokesearch pokemon poliwag -l -> retrieve link for Poliwag's learnset from the current default config gen (IV if 'pokesearch config gen 4' was used)
 
@@ -36,9 +36,11 @@ var pokemonCmd = &cobra.Command{
 		name = strings.Title(name)
 		name = strings.ReplaceAll(name, " ", "_")
 
+		fmt.Printf(color.RedString("Pokémon: ")+BaseURI, name, "")
+
 		if Evolution {
 			suffix := "#Evolution"
-			fmt.Printf(color.CyanString("Evolution: ") + BaseURI, name, suffix)
+			fmt.Printf(color.CyanString("Evolution: ")+BaseURI, name, suffix)
 		}
 		if Learnset {
 			gen := viper.Get("gen")
@@ -54,15 +56,15 @@ var pokemonCmd = &cobra.Command{
 				suffix = fmt.Sprintf("/Generation_%s_learnset", gen)
 			}
 
-			fmt.Printf(color.BlueString("Learnset: ") + BaseURI, name, suffix)
+			fmt.Printf(color.BlueString("Learnset: ")+BaseURI, name, suffix)
 		}
 		if Stats {
 			suffix := "#Stats"
-			fmt.Printf(color.GreenString("Stats: ") + BaseURI, name, suffix)
+			fmt.Printf(color.GreenString("Stats: ")+BaseURI, name, suffix)
 		}
 		if TypeEffectiveness {
 			suffix := "#Type_effectiveness"
-			fmt.Printf(color.MagentaString("Type effectiveness: ") + BaseURI, name, suffix)
+			fmt.Printf(color.MagentaString("Type effectiveness: ")+BaseURI, name, suffix)
 		}
 	},
 }

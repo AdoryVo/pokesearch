@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
@@ -13,17 +14,17 @@ import (
 var genCmd = &cobra.Command{
 	Use:   "gen [gen #]",
 	Short: "Set your default gen for searching learnsets & other information.",
-	Long: `Set your default gen for searching learnsets & other information.`,
+	Long:  `Set your default gen for searching learnsets & other information.`,
 	Example: `
 * pokesearch config gen 4 -> change default gen to IV`,
 	ValidArgs: []string{"1", "2", "3", "4", "5", "6", "7", "8"},
-	Args: cobra.ExactValidArgs(1),
+	Args:      cobra.ExactValidArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		gen := args[0]
 		genNumeral := util.GenToNumeral(gen)
 		viper.Set("gen", genNumeral)
 		viper.WriteConfig()
-		fmt.Printf("Gen set to %s (%s)!\n", genNumeral, gen)
+		fmt.Printf(color.RedString("Gen set to %s (%s)!\n"), genNumeral, gen)
 	},
 }
 

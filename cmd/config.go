@@ -8,8 +8,7 @@ import (
 var configCmd = &cobra.Command{
 	Use:   "config",
 	Short: "Set configuration values like default gen and database source (WIP).",
-	Long: `Set configuration values used for other commands.
-	`,
+	Long:  `Set configuration values used for other commands.`,
 	// Run: func(cmd *cobra.Command, args []string) { }
 }
 

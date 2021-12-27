@@ -8,9 +8,9 @@ Command line tool for searching Pokemon information.
 ![Command line screenshot](assets/screenshot.png)
 
 ## To-do
-- Usage details
 - Finish README.md
 - Research release details 
+	- Zipped version of releases
 - Commands for items & locations
 - Documentation
 
@@ -37,16 +37,15 @@ Command line tool for searching Pokemon information.
 3. Edit util functions in the `util` directory
 4. Run `go run main.go [..commands]` test your commands 
 
-### Build (Docs: https://go.dev/doc/tutorial/compile-install) 
-1. Run `go build`
-2. Run `go install`
-	- If `$GOPATH/bin` is in your $PATH, you should be able to run your executable anywhere!
+### Build and release
+1. Run `make build VERSION=v#.#.#`
+2. Test the executables in `dist/v#.#.#`
 
 ## ✔️ Current Release Details
-
 ### Packages Included
-- Cobra - CLI Building
-- Viper - CLI Config Building
+- Cobra - CLI building
+- Color - Colorized output
+- Viper - CLI config building
 
 ## 📅 Future Release Plans
 - Other database sources
@@ -59,6 +58,7 @@ Command line tool for searching Pokemon information.
 - [A Tour of Go (Go Basics)](https://go.dev/tour/welcome/1)
 - [Go By Example](https://gobyexample.com/)
 - [Go Docs](https://go.dev/doc/)
+- [Color Docs](https://pkg.go.dev/github.com/fatih/color#section-readme)
 - [Cobra User Guide](https://github.com/spf13/cobra/blob/master/user_guide.md)
-- [Viper User Guide](https://github.com/spf13/viper)
+- [Viper Docs](https://github.com/spf13/viper)
 

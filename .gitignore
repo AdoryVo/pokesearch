@@ -1,1 +1,4 @@
-/dist
+.DS_STORE
+/config.yaml
+/dist/*
+!/dist/pokesearch
