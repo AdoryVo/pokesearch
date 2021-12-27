@@ -7,21 +7,14 @@ Command line tool for searching Pokemon information.
 
 ![Command line screenshot](assets/screenshot.png)
 
-## To-do
-- Finish README.md
-- Research release details 
-	- Zipped version of releases
-- Commands for items & locations
-- Documentation
-
-## Usage
+## 💡Usage
 - `pokesearch config gen [genNumber]` - Set a default gen for learnsets
 	- Ex: `pokesearch config gen 4` - Set default gen to IV
 - `pokesearch pokemon [pokemonName] [flags]` - Search info for a specified Pokemon
 	- Ex: `pokesearch pokemon kadabra -elst -g 5`
 		- Get Bulbapedia links for Kadabra's Evolution, Gen V Learnset, Stats, and Type Effectiveness
 
-## 🚀 Getting Started
+## 🚀 Getting Started (Development)
 ### Installation
 - Download [Go](https://go.dev/learn/)
 - Install [Cobra](https://pkg.go.dev/github.com/spf13/cobra#section-readme) with `go get -u github.com/spf13/cobra`
@@ -38,8 +31,8 @@ Command line tool for searching Pokemon information.
 4. Run `go run main.go [..commands]` test your commands 
 
 ### Build and release
-1. Run `make build VERSION=v#.#.#`
-2. Test the executables in `dist/v#.#.#`
+1. Run `make build VERSION=#.#.#`
+2. Test the executables in `dist/#.#.#`
 
 ## ✔️ Current Release Details
 ### Packages Included
