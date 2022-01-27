@@ -7,7 +7,7 @@ Command line tool for searching Pokemon information.
 
 ![Command line screenshot](assets/screenshot-v1.1.0.png)
 
-## 💡Usage
+## 💡 Usage
 - `pokesearch config gen [genNumber]` - Set a default gen for learnsets
 	- Ex: `pokesearch config gen 4` - Set default gen to IV
 - `pokesearch config list` - List configuration values
