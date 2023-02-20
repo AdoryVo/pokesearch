@@ -15,7 +15,7 @@ var listCmd = &cobra.Command{
 	Short: "List the current configuration values.",
 	Long:  `List the current configuration values.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		color.Red("Configurations:")
+		color.Red("Configurations")
 		for k, v := range viper.AllSettings() {
 			fmt.Printf("%s: %s\n", color.GreenString(strings.Title(k)), v)
 		}

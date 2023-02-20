@@ -66,7 +66,7 @@ func initConfig() {
 	if err := viper.ReadInConfig(); err == nil {
 		// fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
 	} else {
-		viper.SetDefault("gen", "VIII")
+		viper.SetDefault("gen", "Latest")
 		viper.SafeWriteConfig()
 	}
 }

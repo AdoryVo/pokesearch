@@ -19,7 +19,7 @@ func GenToNumber(genNumeral string) int {
 func GenToNumeral(genNumber string) string {
 	genNumberInt, err := strconv.Atoi(genNumber)
 	if err != nil {
-		return err.Error()
+		return "Latest"
 	}
 
 	if genNumber == "4" {

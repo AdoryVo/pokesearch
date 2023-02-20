@@ -16,8 +16,10 @@ var genCmd = &cobra.Command{
 	Short: "Set your default gen for searching learnsets & other information.",
 	Long:  `Set your default gen for searching learnsets & other information.`,
 	Example: `
-* pokesearch config gen 4 -> change default gen to IV`,
-	ValidArgs: []string{"1", "2", "3", "4", "5", "6", "7", "8"},
+* pokesearch config gen 4 -> change default gen to IV
+
+* pokesearch config gen latest -> change default gen to the latest gen`,
+	ValidArgs: []string{"1", "2", "3", "4", "5", "6", "7", "8", "latest"},
 	Args:      cobra.ExactValidArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		gen := args[0]

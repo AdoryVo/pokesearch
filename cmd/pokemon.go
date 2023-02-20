@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"net/http"
 	"strconv"
 	"strings"
 
@@ -36,6 +37,16 @@ var pokemonCmd = &cobra.Command{
 		name = strings.Title(name)
 		name = strings.ReplaceAll(name, " ", "_")
 
+		// Check if the given Pokemon exists
+		resp, err := http.Head(fmt.Sprintf(strings.TrimSpace(BaseURI), name, ""))
+		if err != nil {
+			color.Red("Network connection too slow or unavailable - skipping validity check...")
+		} else if resp.StatusCode == 404 {
+			color.Red("The Pokémon or page you requested could not be found - you may have a typo in your command!")
+			return
+		}
+		defer resp.Body.Close()
+
 		fmt.Printf(color.RedString("Pokémon: ")+BaseURI, name, "")
 
 		if Evolution {
@@ -50,7 +61,7 @@ var pokemonCmd = &cobra.Command{
 			suffix := ""
 
 			switch gen {
-			case "VIII":
+			case "Latest":
 				suffix = "#By_leveling_up"
 			default:
 				suffix = fmt.Sprintf("/Generation_%s_learnset", gen)
