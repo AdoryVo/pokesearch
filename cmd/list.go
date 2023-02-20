@@ -9,7 +9,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-// listCmd represents the list command
 var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "List the current configuration values.",

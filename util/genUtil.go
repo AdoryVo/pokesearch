@@ -2,28 +2,25 @@ package util
 
 import (
 	"strconv"
-	"strings"
 )
 
-func GenToNumber(genNumeral string) int {
-	number := 0
-	if strings.Contains(genNumeral, "V") {
-		number += 5
+func GenToNumeral(genNumber interface{}) string {
+	genNumberInt := 9
+	switch value := genNumber.(type) {
+	case string:
+		genNumberConv, err := strconv.Atoi(value)
+		if err != nil {
+			return "Latest"
+		}
+		genNumberInt = genNumberConv
+	case int:
+		genNumberInt = value
 	}
 
-	number += strings.Count(genNumeral, "I")
-
-	return number
-}
-
-func GenToNumeral(genNumber string) string {
-	genNumberInt, err := strconv.Atoi(genNumber)
-	if err != nil {
-		return "Latest"
-	}
-
-	if genNumber == "4" {
+	if genNumberInt == 4 {
 		return "IV"
+	} else if genNumberInt < 1 || genNumberInt > 9 {
+		return "Latest"
 	}
 
 	numeral := ""

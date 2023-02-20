@@ -3,7 +3,6 @@ package cmd
 import (
 	"fmt"
 	"net/http"
-	"strconv"
 	"strings"
 
 	"github.com/fatih/color"
@@ -20,7 +19,6 @@ var Learnset bool
 var Stats bool
 var TypeEffectiveness bool
 
-// pokemonCmd represents the pokemon command
 var pokemonCmd = &cobra.Command{
 	Aliases: []string{"p"},
 	Use:     "pokemon [pokémon]",
@@ -37,12 +35,12 @@ var pokemonCmd = &cobra.Command{
 		name = strings.Title(name)
 		name = strings.ReplaceAll(name, " ", "_")
 
-		// Check if the given Pokemon exists
+		// Check if the specified Pokemon exists
 		resp, err := http.Head(fmt.Sprintf(strings.TrimSpace(BaseURI), name, ""))
 		if err != nil {
 			color.Red("Network connection too slow or unavailable - skipping validity check...")
 		} else if resp.StatusCode == 404 {
-			color.Red("The Pokémon or page you requested could not be found - you may have a typo in your command!")
+			color.Red("The Pokémon you requested could not be found - you may have a typo!")
 			return
 		}
 		defer resp.Body.Close()
@@ -54,17 +52,17 @@ var pokemonCmd = &cobra.Command{
 			fmt.Printf(color.CyanString("Evolution: ")+BaseURI, name, suffix)
 		}
 		if Learnset {
-			gen := viper.Get("gen")
-			if Gen >= 1 && Gen <= 7 {
-				gen = util.GenToNumeral(strconv.Itoa(Gen))
+			genString := viper.Get("gen")
+			if genString == nil || Gen != -1 { // If gen was specified or no config gen exists
+				genString = util.GenToNumeral(Gen)
 			}
-			suffix := ""
 
-			switch gen {
+			suffix := ""
+			switch genString {
 			case "Latest":
 				suffix = "#By_leveling_up"
 			default:
-				suffix = fmt.Sprintf("/Generation_%s_learnset", gen)
+				suffix = fmt.Sprintf("/Generation_%s_learnset", genString)
 			}
 
 			fmt.Printf(color.BlueString("Learnset: ")+BaseURI, name, suffix)
@@ -92,7 +90,7 @@ func init() {
 	// is called directly, e.g.:
 	// pokemonCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	pokemonCmd.Flags().BoolVarP(&Evolution, "evolution", "e", false, "search evolution")
-	pokemonCmd.Flags().IntVarP(&Gen, "gen", "g", 8, "specify gen to override default config gen")
+	pokemonCmd.Flags().IntVarP(&Gen, "gen", "g", -1, "specify gen for learnset (uses config gen by default)")
 	pokemonCmd.Flags().BoolVarP(&Learnset, "learnset", "l", false, "search learnset")
 	pokemonCmd.Flags().BoolVarP(&Stats, "stats", "s", false, "search stats")
 	pokemonCmd.Flags().BoolVarP(&TypeEffectiveness, "type", "t", false, "search type effectiveness")

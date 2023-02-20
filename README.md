@@ -32,7 +32,7 @@ Command line tool for searching Pokemon information.
 4. Run `go run main.go [..commands]` test your commands 
 
 ### Build and release
-1. Run `make build VERSION=#.#.#`
+1. Run `make build VERSION=#.#.#` in Linux or WSL
 2. Test the executables in `dist/#.#.#`
 
 ## ✔️ Current Release Details

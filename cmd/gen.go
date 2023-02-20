@@ -10,7 +10,6 @@ import (
 	"github.com/adoryvo/pokesearch/util"
 )
 
-// genCmd represents the gen command
 var genCmd = &cobra.Command{
 	Use:   "gen [gen #]",
 	Short: "Set your default gen for searching learnsets & other information.",

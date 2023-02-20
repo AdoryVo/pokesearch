@@ -1,3 +1,4 @@
+# Linux Makefile | Golang & zip are required for build.
 VERSION = @latest
 RELEASE_DIR = dist/$(VERSION)
 ARCHIVE_DIR = dist/pokesearch
