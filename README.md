@@ -3,11 +3,15 @@ Command line tool for searching Pokemon information.
 
 ---
 
-*Work in progress*
-
 ![Command line screenshot](assets/screenshot-v1.1.0.png)
 
+## ⭐ Download
+1. Visit the [latest release page](https://github.com/AdoryVo/pokesearch/releases/latest)
+2. Download and extract the binaries for your OS
+3. Open a terminal inside the extracted folder & run `pokesearch.exe` as a command
+
 ## 💡 Usage
+- `pokesearch help` - See information on all commands
 - `pokesearch config gen [genNumber]` - Set a default gen for learnsets
 	- Ex: `pokesearch config gen 4` - Set default gen to IV
 - `pokesearch config list` - List configuration values
